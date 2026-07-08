@@ -38,13 +38,17 @@ export default function LoginPage() {
 
   return (
     <GuestGuard>
-      <div className="flex min-h-screen items-center justify-center bg-zinc-50 px-4 py-12 dark:bg-zinc-950 sm:px-6 lg:px-8">
-        <div className="w-full max-w-md space-y-8 rounded-2xl border border-zinc-200 bg-white p-8 shadow-xl dark:border-zinc-800 dark:bg-zinc-900">
+      <div className="flex min-h-screen items-center justify-center bg-zinc-950 px-4 py-12 sm:px-6 lg:px-8 relative overflow-hidden">
+        {/* Ambient glow backgrounds */}
+        <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] rounded-full bg-indigo-500/10 blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] rounded-full bg-violet-500/10 blur-[120px] pointer-events-none" />
+
+        <div className="w-full max-w-md space-y-8 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 backdrop-blur-xl p-8 shadow-2xl relative z-10">
           <div className="text-center">
-            <h2 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50">
+            <h2 className="text-3xl font-extrabold tracking-tight text-zinc-50">
               Welcome back
             </h2>
-            <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
+            <p className="mt-2 text-sm text-zinc-400">
               Sign in to your account
             </p>
           </div>
@@ -73,7 +77,7 @@ export default function LoginPage() {
               <div className="text-sm">
                 <Link
                   href="/forgot-password"
-                  className="font-semibold text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300"
+                  className="font-semibold text-indigo-400 hover:text-indigo-300 transition-colors"
                 >
                   Forgot your password?
                 </Link>
@@ -85,11 +89,11 @@ export default function LoginPage() {
                 Sign In
               </Button>
 
-              <div className="text-center text-sm text-zinc-500 dark:text-zinc-400">
+              <div className="text-center text-sm text-zinc-400">
                 Don't have an account?{" "}
                 <Link
                   href="/register"
-                  className="font-semibold text-zinc-900 hover:text-zinc-700 dark:text-zinc-100 dark:hover:text-zinc-300"
+                  className="font-semibold text-indigo-400 hover:text-indigo-300 transition-colors"
                 >
                   Create one
                 </Link>

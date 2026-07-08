@@ -10,6 +10,7 @@ import { PasswordInput } from "@/src/components/common/PasswordInput";
 import { Button } from "@/src/components/common/Button";
 import { ErrorMessage } from "@/src/components/common/ErrorMessage";
 import { GuestGuard } from "@/src/modules/auth/components/GuestGuard";
+import { UserRole } from "@/src/modules/auth/types";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -30,7 +31,7 @@ export default function RegisterPage() {
       email: "",
       phone: "",
       password: "",
-      role: "SHOPKEEPER",
+      role: UserRole.SHOPKEEPER,
     },
   });
 
@@ -53,19 +54,23 @@ export default function RegisterPage() {
 
   return (
     <GuestGuard>
-      <div className="flex min-h-screen items-center justify-center bg-zinc-50 px-4 py-12 dark:bg-zinc-950 sm:px-6 lg:px-8">
-        <div className="w-full max-w-md space-y-8 rounded-2xl border border-zinc-200 bg-white p-8 shadow-xl dark:border-zinc-800 dark:bg-zinc-900 transition-all duration-300">
+      <div className="flex min-h-screen items-center justify-center bg-zinc-950 px-4 py-12 sm:px-6 lg:px-8 relative overflow-hidden">
+        {/* Ambient glow backgrounds */}
+        <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] rounded-full bg-indigo-500/10 blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] rounded-full bg-violet-500/10 blur-[120px] pointer-events-none" />
+
+        <div className="w-full max-w-md space-y-8 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 backdrop-blur-xl p-8 shadow-2xl relative z-10">
           <div className="text-center">
-            <h2 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50">
+            <h2 className="text-3xl font-extrabold tracking-tight text-zinc-50">
               Create your account
             </h2>
-            <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
+            <p className="mt-2 text-sm text-zinc-400">
               Join DrinkDoor and manage your sales
             </p>
           </div>
 
           {success ? (
-            <div className="rounded-lg bg-green-50 p-4 text-center text-sm font-semibold text-green-800 dark:bg-green-950/30 dark:text-green-400">
+            <div className="rounded-lg bg-green-950/20 border border-green-800/30 p-4 text-center text-sm font-semibold text-green-400">
               Account created successfully! Redirecting to sign in page...
             </div>
           ) : (
@@ -103,16 +108,16 @@ export default function RegisterPage() {
                 />
 
                 <div className="flex flex-col gap-1.5 w-full">
-                  <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300">
+                  <label className="text-xs font-semibold text-zinc-350">
                     Account Role
                   </label>
                   <select
-                    className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-950 outline-none transition-all focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50 dark:focus:border-zinc-50 dark:focus:ring-zinc-50/15"
+                    className="w-full rounded-lg border border-zinc-800 bg-zinc-900/50 px-3 py-2 text-sm text-zinc-200 outline-none transition-all focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 focus:shadow-[0_0_15px_rgba(99,102,241,0.15)] cursor-pointer"
                     {...register("role")}
                   >
-                    <option value="SHOPKEEPER">Shopkeeper</option>
-                    <option value="DISTRIBUTOR">Distributor</option>
-                    <option value="ADMIN">Admin</option>
+                    <option value="SHOPKEEPER" className="bg-zinc-950 text-zinc-100">Shopkeeper</option>
+                    <option value="DISTRIBUTOR" className="bg-zinc-950 text-zinc-100">Distributor</option>
+                    <option value="ADMIN" className="bg-zinc-950 text-zinc-100">Admin</option>
                   </select>
                 </div>
               </div>
@@ -122,10 +127,10 @@ export default function RegisterPage() {
                   Create Account
                 </Button>
                 <div className="text-center text-sm">
-                  <span className="text-zinc-500 dark:text-zinc-400">Already have an account? </span>
+                  <span className="text-zinc-400">Already have an account? </span>
                   <Link
                     href="/login"
-                    className="font-semibold text-zinc-900 hover:text-zinc-700 dark:text-zinc-100 dark:hover:text-zinc-300"
+                    className="font-semibold text-indigo-400 hover:text-indigo-300 transition-colors"
                   >
                     Sign In
                   </Link>

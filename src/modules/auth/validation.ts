@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { UserRole } from "@/src/modules/auth/types";
 
 export const registerSchema = z.object({
   name: z
@@ -18,7 +19,7 @@ export const registerSchema = z.object({
     .min(6, "Password should be at least 6 characters"),
 
   role: z
-    .enum(["ADMIN", "DISTRIBUTOR", "SHOPKEEPER"])
+    .nativeEnum(UserRole)
     .optional(),
 });
 

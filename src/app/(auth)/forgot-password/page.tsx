@@ -47,27 +47,31 @@ export default function ForgotPasswordPage() {
 
   return (
     <GuestGuard>
-      <div className="flex min-h-screen items-center justify-center bg-zinc-50 px-4 py-12 dark:bg-zinc-950 sm:px-6 lg:px-8">
-        <div className="w-full max-w-md space-y-8 rounded-2xl border border-zinc-200 bg-white p-8 shadow-xl dark:border-zinc-800 dark:bg-zinc-900">
+      <div className="flex min-h-screen items-center justify-center bg-zinc-950 px-4 py-12 sm:px-6 lg:px-8 relative overflow-hidden">
+        {/* Ambient glow backgrounds */}
+        <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] rounded-full bg-indigo-500/10 blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] rounded-full bg-violet-500/10 blur-[120px] pointer-events-none" />
+
+        <div className="w-full max-w-md space-y-8 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 backdrop-blur-xl p-8 shadow-2xl relative z-10">
           <div className="text-center">
-            <h2 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50">
+            <h2 className="text-3xl font-extrabold tracking-tight text-zinc-50">
               Reset Password
             </h2>
-            <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
+            <p className="mt-2 text-sm text-zinc-400">
               Enter your email to get a reset link
             </p>
           </div>
 
           {successInfo ? (
             <div className="space-y-6">
-              <div className="rounded-lg bg-green-50 p-4 text-sm text-green-800 dark:bg-green-950/30 dark:text-green-400">
+              <div className="rounded-lg bg-green-950/20 border border-green-800/30 p-4 text-sm text-green-400">
                 <p className="font-semibold">{successInfo.message}</p>
                 {successInfo.token && (
-                  <div className="mt-4 border-t border-green-200 pt-3 dark:border-green-800">
+                  <div className="mt-4 border-t border-zinc-800 pt-3">
                     <p className="text-xs text-zinc-500 mb-2">Simulated link for local development:</p>
                     <Link
                       href={`/reset-password?token=${successInfo.token}`}
-                      className="font-mono break-all text-xs underline text-green-700 hover:text-green-800 dark:text-green-400 dark:hover:text-green-300"
+                      className="font-mono break-all text-xs underline text-indigo-400 hover:text-indigo-300 transition-colors"
                     >
                       Click here to reset your password
                     </Link>
@@ -77,7 +81,7 @@ export default function ForgotPasswordPage() {
               <div className="text-center text-sm">
                 <Link
                   href="/login"
-                  className="font-semibold text-zinc-900 hover:underline dark:text-zinc-50"
+                  className="font-semibold text-indigo-400 hover:text-indigo-300 transition-colors"
                 >
                   Return to Login
                 </Link>
@@ -102,7 +106,7 @@ export default function ForgotPasswordPage() {
                 <div className="text-center text-sm">
                   <Link
                     href="/login"
-                    className="font-semibold text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300"
+                    className="font-semibold text-zinc-400 hover:text-zinc-200 transition-colors"
                   >
                     Back to Sign In
                   </Link>

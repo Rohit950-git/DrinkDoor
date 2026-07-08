@@ -125,13 +125,17 @@ function ResetPasswordForm() {
 export default function ResetPasswordPage() {
   return (
     <GuestGuard>
-      <div className="flex min-h-screen items-center justify-center bg-zinc-50 px-4 py-12 dark:bg-zinc-950 sm:px-6 lg:px-8">
-        <div className="w-full max-w-md space-y-8 rounded-2xl border border-zinc-200 bg-white p-8 shadow-xl dark:border-zinc-800 dark:bg-zinc-900">
+      <div className="flex min-h-screen items-center justify-center bg-zinc-950 px-4 py-12 sm:px-6 lg:px-8 relative overflow-hidden">
+        {/* Ambient glow backgrounds */}
+        <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] rounded-full bg-indigo-500/10 blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] rounded-full bg-violet-500/10 blur-[120px] pointer-events-none" />
+
+        <div className="w-full max-w-md space-y-8 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 backdrop-blur-xl p-8 shadow-2xl relative z-10">
           <Suspense
             fallback={
               <div className="flex flex-col items-center justify-center gap-4 py-8">
-                <Loader size="md" className="text-zinc-900 dark:text-zinc-50" />
-                <p className="text-sm text-zinc-500 dark:text-zinc-400">Loading form...</p>
+                <Loader size="md" className="text-zinc-50" />
+                <p className="text-sm text-zinc-400">Loading form...</p>
               </div>
             }
           >

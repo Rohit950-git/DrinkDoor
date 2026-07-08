@@ -19,8 +19,8 @@ export const PasswordInput = forwardRef<HTMLInputElement, Omit<InputProps, "type
             type={showPassword ? "text" : "password"}
             ref={ref}
             className={cn(
-              "w-full rounded-lg border border-zinc-200 bg-white pl-3 pr-10 py-2 text-sm text-zinc-950 placeholder:text-zinc-400 outline-none transition-all focus:border-zinc-900 focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50 dark:placeholder:text-zinc-600 dark:focus:border-zinc-50 dark:focus:ring-zinc-50/15",
-              error && "border-destructive focus:border-destructive focus:ring-destructive/10 dark:border-destructive/50 dark:focus:border-destructive/50 dark:focus:ring-destructive/15",
+              "w-full rounded-lg border border-zinc-800 bg-zinc-900/50 pl-3 pr-10 py-2 text-sm text-zinc-100 placeholder:text-zinc-500 outline-none transition-all focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 focus:shadow-[0_0_15px_rgba(99,102,241,0.15)]",
+              error && "border-destructive/60 focus:border-destructive focus:ring-destructive/20 focus:shadow-[0_0_15px_rgba(239,68,68,0.15)]",
               className
             )}
             {...props}
