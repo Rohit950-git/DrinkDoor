@@ -36,6 +36,8 @@ export function UserMenu() {
 
   if (!user) return null;
 
+  const dashboardPrefix = `/${user.role.toLowerCase()}/dashboard`;
+
   return (
     <div className="relative inline-block text-left" ref={dropdownRef}>
       {/* Trigger Button */}
@@ -87,7 +89,7 @@ export function UserMenu() {
             {/* Menu Links */}
             <div className="p-1.5 space-y-0.5">
               <button
-                onClick={() => handleItemClick("/admin/dashboard?tab=profile")}
+                onClick={() => handleItemClick(`${dashboardPrefix}?tab=profile`)}
                 className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-zinc-700 dark:text-zinc-350 hover:text-zinc-950 dark:hover:text-zinc-100 hover:bg-zinc-50/80 dark:hover:bg-zinc-900/50 transition-all text-xs font-medium outline-none text-left"
               >
                 <User className="h-4 w-4 text-zinc-400" />
@@ -95,7 +97,7 @@ export function UserMenu() {
               </button>
 
               <button
-                onClick={() => handleItemClick("/admin/dashboard?tab=settings")}
+                onClick={() => handleItemClick(`${dashboardPrefix}?tab=settings`)}
                 className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-zinc-700 dark:text-zinc-350 hover:text-zinc-950 dark:hover:text-zinc-100 hover:bg-zinc-50/80 dark:hover:bg-zinc-900/50 transition-all text-xs font-medium outline-none text-left"
               >
                 <Settings className="h-4 w-4 text-zinc-400" />

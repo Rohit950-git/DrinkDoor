@@ -68,6 +68,7 @@ export function Sidebar({ collapsed, setCollapsed, onItemClick, isMobile = false
         {
           title: "System",
           items: [
+            { label: "User Directory", href: "/admin/dashboard?tab=users", icon: Users },
             { label: "Settings", href: "/admin/dashboard?tab=settings", icon: Settings },
           ],
         },

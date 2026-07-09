@@ -1,4 +1,4 @@
-import { UserRole } from "@/src/models/User";
+import { UserRole } from "@/src/modules/auth/types";
 
 
 export interface RegisterDto {
@@ -23,4 +23,5 @@ export interface AuthUser {
 
 export interface JwtPayload {
   id: string;
+  role: UserRole;
 }

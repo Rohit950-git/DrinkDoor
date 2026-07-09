@@ -72,7 +72,7 @@ class AuthService {
     await authRepository.updateLastLogin(user.id);
 
     // Generate JWT
-    const token = generateToken(user.id);
+    const token = generateToken({ id: user.id, role: user.role });
 
     return {
       token,

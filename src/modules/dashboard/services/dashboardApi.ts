@@ -1,0 +1,247 @@
+import { apiSlice } from "@/src/store/apiSlice";
+import { DashboardResponse } from "../types";
+
+export const dashboardApi = apiSlice.injectEndpoints({
+  endpoints: (builder) => ({
+    getDashboardData: builder.query<DashboardResponse, void>({
+      queryFn: async () => {
+        // Return structured mock data for premium ERP dashboard
+        const mockData: DashboardResponse = {
+          stats: {
+            totalProducts: { value: 142, change: 8.4, isPositive: true },
+            totalInventory: { value: "$384,290.50", change: 12.1, isPositive: true },
+            todaySales: { value: "$18,450.00", change: 14.5, isPositive: true },
+            monthlyRevenue: { value: "$142,384.50", change: 8.2, isPositive: true },
+            pendingRequests: { value: 14, change: -18.5, isPositive: false },
+            approvedRequests: { value: 89, change: 10.2, isPositive: true },
+            dispatches: { value: 24, change: 4.8, isPositive: true },
+            deliveries: { value: 118, change: 9.3, isPositive: true },
+            lowStockCount: { value: 8, change: -20.0, isPositive: false },
+            activeUsers: { value: 1252, change: 6.2, isPositive: true },
+          },
+          salesOverview: [
+            { name: "Mon", value: 12000 },
+            { name: "Tue", value: 19000 },
+            { name: "Wed", value: 15000 },
+            { name: "Thu", value: 22000 },
+            { name: "Fri", value: 30000 },
+            { name: "Sat", value: 28000 },
+            { name: "Sun", value: 35000 },
+          ],
+          revenueAnalytics: [
+            { name: "Jan", value: 112000, secondary: 98000 },
+            { name: "Feb", value: 124000, secondary: 102000 },
+            { name: "Mar", value: 142000, secondary: 110000 },
+            { name: "Apr", value: 135000, secondary: 125000 },
+            { name: "May", value: 158000, secondary: 130000 },
+            { name: "Jun", value: 172000, secondary: 142000 },
+          ],
+          weeklySales: [
+            { name: "Week 1", value: 28000 },
+            { name: "Week 2", value: 35000 },
+            { name: "Week 3", value: 41000 },
+            { name: "Week 4", value: 38400 },
+          ],
+          monthlySales: [
+            { name: "Jan", value: 112000 },
+            { name: "Feb", value: 124000 },
+            { name: "Mar", value: 142000 },
+            { name: "Apr", value: 135000 },
+            { name: "May", value: 158000 },
+            { name: "Jun", value: 172000 },
+          ],
+          inventoryDistribution: [
+            { name: "Whiskey", value: 45 },
+            { name: "Vodka", value: 25 },
+            { name: "Rum", value: 15 },
+            { name: "Tequila", value: 10 },
+            { name: "Gin", value: 5 },
+          ],
+          productCategories: [
+            { name: "Single Malt", value: 40 },
+            { name: "Premium Blend", value: 30 },
+            { name: "Craft Spirits", value: 20 },
+            { name: "Liqueurs", value: 10 },
+          ],
+          dispatchTrend: [
+            { name: "Mon", value: 4 },
+            { name: "Tue", value: 6 },
+            { name: "Wed", value: 8 },
+            { name: "Thu", value: 5 },
+            { name: "Fri", value: 9 },
+            { name: "Sat", value: 7 },
+            { name: "Sun", value: 3 },
+          ],
+          deliveryTrend: [
+            { name: "Mon", value: 12 },
+            { name: "Tue", value: 18 },
+            { name: "Wed", value: 15 },
+            { name: "Thu", value: 21 },
+            { name: "Fri", value: 28 },
+            { name: "Sat", value: 20 },
+            { name: "Sun", value: 10 },
+          ],
+          stockMovement: [
+            { name: "Mon", value: 80, secondary: 70 },
+            { name: "Tue", value: 95, secondary: 85 },
+            { name: "Wed", value: 120, secondary: 110 },
+            { name: "Thu", value: 110, secondary: 90 },
+            { name: "Fri", value: 140, secondary: 130 },
+            { name: "Sat", value: 105, secondary: 95 },
+            { name: "Sun", value: 70, secondary: 60 },
+          ],
+          recentActivities: [
+            {
+              id: "act-1",
+              user: "Marcus Aurelius",
+              role: "ADMIN",
+              action: "approved stock request",
+              target: "SR-9024 (Central Beverages)",
+              time: "10 mins ago",
+              type: "success",
+            },
+            {
+              id: "act-2",
+              user: "Julius Caesar",
+              role: "DISTRIBUTOR",
+              action: "dispatched order",
+              target: "DP-8802 (Apex Logistics)",
+              time: "25 mins ago",
+              type: "info",
+            },
+            {
+              id: "act-3",
+              user: "Cleopatra Philopator",
+              role: "SHOPKEEPER",
+              action: "reported low stock",
+              target: "Glenfiddich 18 Year Single Malt",
+              time: "1 hour ago",
+              type: "warning",
+            },
+            {
+              id: "act-4",
+              user: "Alexander Magnus",
+              role: "ADMIN",
+              action: "created new user account",
+              target: "distributor-sparta@drinkdoor.com",
+              time: "3 hours ago",
+              type: "success",
+            },
+          ],
+          recentStockRequests: [
+            {
+              id: "SR-9024",
+              shopkeeper: "Central Beverages",
+              items: "48 Cases (Premium Vodka & Soda)",
+              status: "pending",
+              time: "15 mins ago",
+            },
+            {
+              id: "SR-9023",
+              shopkeeper: "Quick Stop Market",
+              items: "12 Cases (Single Malt Whiskey)",
+              status: "approved",
+              time: "45 mins ago",
+            },
+            {
+              id: "SR-9022",
+              shopkeeper: "Apex Distribution",
+              items: "120 Cases (Aviation Gin)",
+              status: "approved",
+              time: "2 hours ago",
+            },
+          ],
+          latestDispatches: [
+            {
+              id: "DP-8802",
+              distributor: "Apex Logistics",
+              destination: "Central Beverages (Midtown)",
+              items: "48 Cases (Soda & Water)",
+              status: "in-transit",
+              time: "10 mins ago",
+            },
+            {
+              id: "DP-8801",
+              distributor: "Global Transit",
+              destination: "Metro Supermarket (Downtown)",
+              items: "30 Cases (Sparkling)",
+              status: "completed",
+              time: "3 hours ago",
+            },
+          ],
+          latestDeliveries: [
+            {
+              id: "DEL-4412",
+              distributor: "Apex Logistics",
+              shopkeeper: "Central Beverages",
+              status: "delivered",
+              amount: "$840.00",
+              time: "15 mins ago",
+            },
+            {
+              id: "DEL-4411",
+              distributor: "Global Transit",
+              shopkeeper: "Metro Supermarket",
+              status: "delivered",
+              amount: "$1,250.00",
+              time: "1 hour ago",
+            },
+          ],
+          lowStockProducts: [
+            {
+              id: "p-101",
+              name: "Macallan Sherry Oak 18 Year",
+              category: "Whiskey",
+              stock: 3,
+              minStock: 10,
+              sku: "WHI-MAC-18Y",
+            },
+            {
+              id: "p-102",
+              name: "Grey Goose Premium Vodka",
+              category: "Vodka",
+              stock: 5,
+              minStock: 20,
+              sku: "VOD-GRY-GSE",
+            },
+            {
+              id: "p-103",
+              name: "Patrón Añejo Tequila",
+              category: "Tequila",
+              stock: 2,
+              minStock: 12,
+              sku: "TEQ-PAT-ANJ",
+            },
+          ],
+          topSellingProducts: [
+            {
+              id: "p-1",
+              name: "Glenfiddich 12 Year Single Malt",
+              category: "Whiskey",
+              sales: 384,
+              revenue: "$24,960.00",
+            },
+            {
+              id: "p-2",
+              name: "Grey Goose Original Vodka",
+              category: "Vodka",
+              sales: 290,
+              revenue: "$13,050.00",
+            },
+            {
+              id: "p-3",
+              name: "Hendrick's Artisanal Gin",
+              category: "Gin",
+              sales: 210,
+              revenue: "$9,450.00",
+            },
+          ],
+        };
+
+        return { data: mockData };
+      },
+    }),
+  }),
+});
+
+export const { useGetDashboardDataQuery } = dashboardApi;
